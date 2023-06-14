@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+/* Generic Stylying */
+body {
+  background-color: black;
+  color: white;
+}
