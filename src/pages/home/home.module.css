@@ -1,0 +1,7 @@
+.home-container {
+    display: flex;
+    justify-content: start;
+    text-align: left;
+   
+    width: 100vh;
+}

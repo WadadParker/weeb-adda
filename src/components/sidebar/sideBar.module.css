@@ -1,0 +1,21 @@
+.sidebar-icons-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    font-size: 1.8rem;
+    place-items: center start;
+    gap:2rem 1rem;
+}
+.new-post-button {
+    grid-column: 1 / span 2;
+    font-size: 1.4rem;
+    justify-self: start;
+}
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 35vh;
+    height: 90vh;
+    justify-content: space-between;
+    margin-left: 10rem;
+    padding-top: 5rem;
+}

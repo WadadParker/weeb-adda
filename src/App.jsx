@@ -4,18 +4,16 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import {Route,Routes} from "react-router-dom";
 
-import {Home} from "src/pages/Home";
+import {Home} from "src/pages/home/Home.jsx";
 
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
 		<>
-			<div>
+			
 				<Routes>
 					<Route path="/" element={<Home />} />
 				</Routes>
-			</div>	
+			
 		</>
 	);
 }
