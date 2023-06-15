@@ -2,12 +2,26 @@
     display: flex;
     justify-content: start;
     text-align: left;
-    width: 100vh;
+    width: 50rem;
 }
 .posts-list-container {
     list-style: none;
+    /* padding-inline-start:0 ;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50rem;
 }
 .post-list-item {
     margin:1rem;
     width: 45rem;
+}
+.user-feed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50rem;
 }
