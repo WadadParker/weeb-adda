@@ -2,6 +2,12 @@
     display: flex;
     justify-content: start;
     text-align: left;
-   
     width: 100vh;
+}
+.posts-list-container {
+    list-style: none;
+}
+.post-list-item {
+    margin:1rem;
+    width: 45rem;
 }
