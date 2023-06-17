@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+import {Home} from "src/pages/Home"
+
 if (import.meta.env.DEV) {
 	window.onerror = (event, source, lineno, colno, err) => {
 		const ErrorOverlay = customElements.get("vite-error-overlay");
