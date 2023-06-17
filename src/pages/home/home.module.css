@@ -1,8 +1,7 @@
 .home-container {
     display: flex;
-    justify-content: start;
-    text-align: left;
-    width: 50rem;
+    flex-direction: row;
+    width: 100vw;
 }
 .posts-list-container {
     list-style: none;
@@ -12,16 +11,20 @@
     margin-block-end: 0; */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 50rem;
+    justify-content: stretch;
+    min-width: 10rem;
+    max-width: 100%;
+    flex-grow: 1;
 }
 .post-list-item {
     margin:1rem;
-    width: 45rem;
+    max-width:100%;
+    min-width: 10rem;
+    
 }
-.user-feed-container {
+/* .user-feed-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50rem;
-}
+} */

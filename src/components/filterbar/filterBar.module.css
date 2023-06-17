@@ -4,15 +4,19 @@
     border: 1px solid white;
     border-radius: 2rem;
     margin:1rem;
-    width: 35rem;
+    min-width: min-content;
     padding: 0 1rem;
     justify-content: center;
     align-items: center;
     text-align: center;
+    align-self: center;
 }
 .filter-container hr {
     align-self: stretch;
 }
 .icon {
     margin: 0 1rem;
+}
+.latest {
+    padding-right: 1rem;
 }

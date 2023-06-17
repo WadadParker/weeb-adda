@@ -8,7 +8,8 @@
     border: 1px solid white;
     height: fit-content;
     padding: 1rem;
-    width: 100%; 
+    max-width:100%; 
+    min-width: min-content;
 }
 .postcard-header-container {
     display: flex;

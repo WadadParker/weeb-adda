@@ -13,9 +13,10 @@
 .sidebar-container {
     display: flex;
     flex-direction: column;
-    width: 35vh;
+    max-width:fit-content;
     height: 90vh;
     justify-content: space-between;
-    margin-left: 10rem;
+    /* margin-left: 10rem; */
+    margin-left: 5%;
     padding-top: 5rem;
 }

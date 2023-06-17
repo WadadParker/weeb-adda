@@ -9,7 +9,7 @@ export const FilterBar=()=>
         <div className={styles[`filter-container`]}>
             
             <FontAwesomeIcon icon={faClock} className={styles.icon}/>
-            <p>Latest </p>
+            <p className={styles.latest}>Latest </p>
             <hr />
             <FontAwesomeIcon icon={faFire} className={styles.icon}/>
             <p>Trending</p>
