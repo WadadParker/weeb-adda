@@ -14,5 +14,6 @@ export const users = [
     password: "wadadparker",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bookmarks: []
   },
 ];

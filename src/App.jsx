@@ -6,6 +6,17 @@ import {Route,Routes} from "react-router-dom";
 
 import {Home} from "src/pages/home/Home.jsx";
 
+if (import.meta.env.DEV) {
+	window.onerror = (event, source, lineno, colno, err) => {
+		const ErrorOverlay = customElements.get("vite-error-overlay");
+		if (!ErrorOverlay) {
+			return;
+		}
+		const overlay = new ErrorOverlay(err);
+		document.body.appendChild(overlay);
+	};
+}
+
 function App() {
 	return (
 		<>
