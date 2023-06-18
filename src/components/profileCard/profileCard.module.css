@@ -1,0 +1,24 @@
+.profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    max-width: fit-content;
+    font-size: 1.3rem;
+}
+.profile-card-header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1rem;
+}
+.ellipsis {
+    font-size: 2rem;
+    margin:0 1rem;
+}
+.profile-img {
+    border-radius: 50%;
+    height: 50;
+    width: 100;
+    margin-left: 1rem;
+}
