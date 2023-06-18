@@ -1,0 +1,25 @@
+.search-users-container {
+    display: grid;
+    grid-template-areas: 
+        "search"
+        "list";
+    align-self: start;
+    margin-right: 5%;
+}
+.suggested-users-list {
+    list-style: none;
+    grid-area:list ;
+}
+.input {
+    grid-area: search;
+    color: white;
+    border: 1px solid white;
+    background-color: black;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+.input::placeholder {
+    color: white;
+}

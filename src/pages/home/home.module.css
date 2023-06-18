@@ -1,0 +1,30 @@
+.home-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+.posts-list-container {
+    list-style: none;
+    /* padding-inline-start:0 ;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    min-width: 10rem;
+    max-width: 100%;
+    flex-grow: 1;
+}
+.post-list-item {
+    margin:1rem;
+    max-width:100%;
+    min-width: 10rem;
+    
+}
+/* .user-feed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50rem;
+} */
