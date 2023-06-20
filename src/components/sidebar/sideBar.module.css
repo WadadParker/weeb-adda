@@ -19,4 +19,7 @@
     /* margin-left: 10rem; */
     margin-left: 5%;
     padding-top: 5rem;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
