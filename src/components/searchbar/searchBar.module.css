@@ -5,6 +5,9 @@
         "list";
     align-self: start;
     margin-right: 5%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
 .suggested-users-list {
     list-style: none;
