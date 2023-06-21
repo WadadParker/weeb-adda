@@ -12,7 +12,7 @@ export const Sidebar=()=>
         <div className={styles[`sidebar-container`]}>
         <header className={styles[`sidebar-icons-container`]}>
             <FontAwesomeIcon icon={faHouse} />
-            <Link>Home</Link>
+            <Link to="/home">Home</Link>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             <Link>Explore</Link>
             <FontAwesomeIcon icon={faBookmark} />
