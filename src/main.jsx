@@ -5,6 +5,7 @@ import './index.css'
 import { makeServer } from "./server.js";
 
 import {BrowserRouter} from "react-router-dom";
+import { AuthProvider } from 'src/context/AuthContext.js';
 
 // Call make Server
 makeServer();
@@ -12,7 +13,9 @@ makeServer();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>  
     </BrowserRouter>
   </React.StrictMode>,
 )
