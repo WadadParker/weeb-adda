@@ -5,7 +5,9 @@ import './index.css'
 import { makeServer } from "./server.js";
 
 import {BrowserRouter} from "react-router-dom";
-import { AuthProvider } from 'src/context/AuthContext.js';
+import { AuthContext,AuthProvider } from 'src/context/AuthContext';
+
+export {AuthContext};
 
 // Call make Server
 makeServer();

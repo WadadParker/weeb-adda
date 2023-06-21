@@ -9,6 +9,7 @@ import { Post } from "src/pages/post/Post";
 import { Profile } from "src/pages/profile/Profile";
 import { LoginPage } from "src/pages/login/LoginPage.jsx";
 import { Signup } from "src/pages/signup/Signup";
+import Mockman from "mockman-js";
 
 if (import.meta.env.DEV) {
 	window.onerror = (event, source, lineno, colno, err) => {
@@ -31,6 +32,7 @@ function App() {
 					<Route path="/home" element={<Home />} />
 					<Route path="/post/:postID" element={<Post />} />
 					<Route path="/profile/:username" element={<Profile />} />
+					<Route path="/mock-api" element={<Mockman colorScheme="dark"/>} />
 				</Routes>
 			
 		</>
