@@ -11,8 +11,8 @@ export const LoginPage=()=>
                 <h1 style={{fontSize:"7rem",margin:"0"}}>Weeb Adda</h1>
                 <main className={styles[`login-container`]}>
                     <h2>Login</h2>
-                    <label htmlFor="email">Enter Email</label>
-                    <input id="label"></input>
+                    <label htmlFor="username">Username</label>
+                    <input id="username"></input>
 
                     <label htmlFor="password">Enter Password</label>
                     <input type="password" id="password"></input>

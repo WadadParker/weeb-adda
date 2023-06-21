@@ -1,0 +1,83 @@
+.input-field-container {
+    display: grid;
+}
+.input-field-container input{
+    padding: 1rem;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 0.3rem;
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+.signup-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 1rem ;
+    border: 3px solid white;
+    font-size: 2rem;
+    padding: 0 1rem;
+    justify-self: center;
+
+
+}
+.password-field-container label {
+    grid-area: label;
+    
+}
+.password-field-container input {
+    grid-area: password;
+    padding: 1rem;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 0.3rem;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+.icon {
+    grid-area: password;
+    place-self: center end;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+
+.password-field-container {
+    display: grid;
+    grid-template-areas: 
+    "label"
+    "password";
+}
+.signup-container h2 {
+    grid-column: 1 / span 2;
+}
+.password {
+    grid-column-start:1 ;
+}
+.signup-container button, .signup-container a {
+    grid-column: 1/span 2;
+    justify-self: center;
+    margin: 1rem 0;
+}
+.signup-button {
+    background-color: black;
+    border: 1px solid white;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.header {
+    display: flex;
+    justify-content: center;
+}
+.landing-page-container {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    width: 100vw;
+}
+.header h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
