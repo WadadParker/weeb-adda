@@ -1,10 +1,11 @@
-import styles from "/src/components/profileCard/profileCard.module.css";
+import styles from "./followerCard.module.css";
+
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 
-export const ProfileCard=()=>
+export const FollowerCard=()=>
 {
     const navigate=useNavigate();
     return (
@@ -17,7 +18,7 @@ export const ProfileCard=()=>
                 <strong>Wadad Parker</strong>
                 <span>@wadadparker</span>
             </header>
-            <FontAwesomeIcon icon={faEllipsis} className={styles.ellipsis} />
+            <button className={styles.follow}>Follow</button>
         </div>
     )
 }

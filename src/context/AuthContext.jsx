@@ -1,6 +1,8 @@
-import { createContext,useState, useReducer } from "react";
+import { createContext,useState, useReducer,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { ProfileContext } from "./ProfileContext";
 
 export const AuthContext=createContext();
 
@@ -8,6 +10,7 @@ export const AuthProvider=({children})=>
 {
     const [isLoggedIn,setIsLoggedIn]=useState(false);
     const navigate=useNavigate();
+    const {dispatch:profileDispatch}=useContext(ProfileContext)
 
     const AuthReducer=(state,{type,payload,inputField})=>
     {
@@ -44,6 +47,7 @@ export const AuthProvider=({children})=>
             if(response.status===200)
             {
                 setIsLoggedIn(true);
+                profileDispatch({type:"CURRENT_USER",payload:response.data.foundUser})
                 localStorage.setItem("user",response.data.foundUser);
                 localStorage.setItem("token",response.data.encodedToken);
                 navigate("/home");
