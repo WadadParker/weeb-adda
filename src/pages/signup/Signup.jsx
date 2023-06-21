@@ -9,7 +9,7 @@ import { AuthContext } from "src/context/AuthContext";
 
 export const Signup=()=>
 {
-    const {authState,dispatch}=useContext(AuthContext);
+    const {authState,dispatch,signupHanlder}=useContext(AuthContext);
     const {signup:{name,username,email,password,confirmPassword}}=authState;
     return (
         <div className={styles[`landing-page-container`]}>
@@ -46,7 +46,7 @@ export const Signup=()=>
                     <FontAwesomeIcon icon={faEyeSlash} className={styles.icon}/>
                     </div>
 
-                    <button className={styles[`signup-button`]}>Signup</button>
+                    <button className={styles[`signup-button`]} onClick={()=>signupHanlder()}>Signup</button>
                     <a href="/">Already have an account</a>
             </main>
         </div>

@@ -39,7 +39,6 @@ export const AuthProvider=({children})=>
     {
         const {login}=authState;
         const {username,password}=login
-        console.log(username,password);
         try {
             const response= await axios.post("/api/auth/login",{username,password});
             if(response.status===200)
@@ -56,8 +55,29 @@ export const AuthProvider=({children})=>
         }
     }
 
+    const signupHanlder= async ()=>
+    {
+        const {signup}=authState;
+        const {username,password,name,email}=signup;
+        try {
+            const response= await axios.post("/api/auth/signup",{username,password,name,email});
+            if(response.status===201)
+            {
+                setIsLoggedIn(true);
+                localStorage.setItem("user",response.data.foundUser);
+                localStorage.setItem("token",response.data.encodedToken);
+                navigate("/home");
+
+            }
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{isLoggedIn,authState,dispatch,loginHandler}}>
+        <AuthContext.Provider value={{isLoggedIn,authState,dispatch,loginHandler,signupHanlder}}>
             {children}
         </AuthContext.Provider>
     )
