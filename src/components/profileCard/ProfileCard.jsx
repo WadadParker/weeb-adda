@@ -19,7 +19,7 @@ export const ProfileCard=()=>
             height={76}/>
             <header className={styles['profile-card-header']} onClick={()=>navigate(`/profile/${currentUser?.username}`)}>
                 <strong>{currentUser?.name}</strong>
-                <span>{currentUser?.username}</span>
+                <span>@{currentUser?.username}</span>
             </header>
             <FontAwesomeIcon icon={faEllipsis} className={styles.ellipsis} />
         </div>

@@ -7,21 +7,29 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 import {PostCard} from "src/components/postcard/PostCard.jsx";
 import { AuthContext } from "src/context/AuthContext";
+import { ProfileContext } from "src/context/ProfileContext";
+import { EditUser } from "src/components/editUser/EditUser";
 
 export const ProfilePage=({user})=>
 {
     const {logoutHandler}=useContext(AuthContext);
-    return (
+    const {state,dispatch}=useContext(ProfileContext);
+    const {showModal}=state;
+    return (<>
+        {showModal && <EditUser />}
         <div className={styles[`profilePage-container`]}>
+            
             <img className={styles.coverimg} alt="" src="https://i.pinimg.com/originals/07/ae/16/07ae16b891cd997f2e2f45e597a52ef5.jpg"  height={300}/>
             <header className={styles[`profile-header-container`]}>
                 <img className={styles.pfp} alt="" src="https://i.pinimg.com/originals/98/c0/83/98c08367933f07c451a18c4507f011a5.jpg" width={150} height={150}/>
-                <button className={styles[`edit-button`]}>Edit Profile</button>
+
+                <button className={styles[`edit-button`]} onClick={()=>dispatch({type:"TOGGLE_MODAL",payload:true})}>Edit Profile</button>
                 <main className={styles.main}>
                     <strong>{user?.name}</strong>
-                    <span>{user?.username}</span>
+                    <span>@{user?.username}</span>
                 </main>
             </header>
+            
             <footer className={styles[`footer-container`]}>
                 <p>{user?.bio}</p>
                 <a href="" target="_blank"> <FontAwesomeIcon icon={faGlobe} />  Website</a>
@@ -41,5 +49,6 @@ export const ProfilePage=({user})=>
 
 
         </div>
+        </>
     )
 }

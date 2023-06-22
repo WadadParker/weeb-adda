@@ -9,6 +9,11 @@ export const ProfileProvider=({children})=>
         switch(type){
             case "CURRENT_USER":
                 return {...profile,currentUser:payload};
+
+            case "TOGGLE_MODAL":
+                console.log("working",payload,profile.showModal);
+                return {...profile,showModal:payload};    
+
             default:
                 return profile;    
         }
@@ -16,6 +21,7 @@ export const ProfileProvider=({children})=>
 
     const initialState={
         currentUser:{},
+        showModal:false,
     }
 
     const [state,dispatch]=useReducer(ProfileReducer,initialState)
