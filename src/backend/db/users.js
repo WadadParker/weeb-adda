@@ -13,6 +13,7 @@ export const users = [
     password: "wadadparker",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio:`Ek "haath chhodiye samose jal jaenge" wala moment toh may bhi deserve karta hun >_< `,
     bookmarks: []
   },
 ];

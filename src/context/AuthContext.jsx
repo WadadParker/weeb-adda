@@ -79,9 +79,13 @@ export const AuthProvider=({children})=>
             console.log(error);
         }
     }
+    const logoutHandler=()=>
+    {
+        setIsLoggedIn(false);
+    }
 
     return (
-        <AuthContext.Provider value={{isLoggedIn,authState,dispatch,loginHandler,signupHanlder}}>
+        <AuthContext.Provider value={{isLoggedIn,authState,dispatch,loginHandler,signupHanlder,logoutHandler}}>
             {children}
         </AuthContext.Provider>
     )
