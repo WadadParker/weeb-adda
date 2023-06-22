@@ -6,8 +6,9 @@ import { makeServer } from "./server.js";
 
 import {BrowserRouter} from "react-router-dom";
 import { AuthContext,AuthProvider } from 'src/context/AuthContext';
+import { ProfileContext,ProfileProvider } from 'src/context/ProfileContext.jsx';
 
-export {AuthContext};
+export {AuthContext,ProfileContext};
 
 // Call make Server
 makeServer();
@@ -15,9 +16,11 @@ makeServer();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>  
+      <ProfileProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>  
+      </ProfileProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
