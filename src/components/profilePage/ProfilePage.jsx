@@ -8,6 +8,7 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import {PostCard} from "src/components/postcard/PostCard.jsx";
 import { AuthContext } from "src/context/AuthContext";
 import { ProfileContext } from "src/context/ProfileContext";
+import { PostContext } from "src/context/PostContext";
 import { EditUser } from "src/components/editUser/EditUser";
 
 export const ProfilePage=({user})=>
@@ -15,6 +16,7 @@ export const ProfilePage=({user})=>
     const {logoutHandler}=useContext(AuthContext);
     const {state,dispatch}=useContext(ProfileContext);
     const {showModal}=state;
+    const {state:{userPosts}}=useContext(PostContext);
 
     return (<>
         {showModal && <EditUser />}
@@ -41,6 +43,14 @@ export const ProfilePage=({user})=>
             <h1>Posts</h1>
 
             <ul className={styles_list[`posts-list-container`]}>
+                {userPosts?.map(item=>{
+                    const {_id}=item;
+                    return (
+                        <li key={_id} className={styles_list[`post-list-item`]}>
+                            <PostCard post={item}/>
+                        </li>
+                    )
+                })}
                     <li className={styles_list[`post-list-item`]}><PostCard /></li>
                     <li className={styles_list[`post-list-item`]}><PostCard /></li>
                     <li className={styles_list[`post-list-item`]}><PostCard /></li>
