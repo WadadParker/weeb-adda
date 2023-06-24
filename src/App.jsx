@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -10,6 +10,8 @@ import { Profile } from "src/pages/profile/Profile";
 import { LoginPage } from "src/pages/login/LoginPage.jsx";
 import { Signup } from "src/pages/signup/Signup";
 import Mockman from "mockman-js";
+import { CreatePostModal } from "src/components/createPost/CreatePostModal";
+import { PostContext } from "src/context/PostContext";
 
 if (import.meta.env.DEV) {
 	window.onerror = (event, source, lineno, colno, err) => {
@@ -23,9 +25,10 @@ if (import.meta.env.DEV) {
 }
 
 function App() {
+	const {state:{showPostModal}}=useContext(PostContext);
 	return (
 		<>
-			
+				{showPostModal && <CreatePostModal />}
 				<Routes>
 					<Route path="/" element={<LoginPage />} />
 					<Route path="/signup" element={<Signup />} />

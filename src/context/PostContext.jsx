@@ -12,12 +12,16 @@ export const PostProvider=({children})=>
             case "ALL_USER_POSTS":
                 return {...post,userPosts:payload};
             
+            case "TOGGLE_POST_MODAL":
+                return {...post,showPostModal:payload};
+                
             default:
                 return post;    
         }
     }
     const initialState= {
         userPosts:[],
+        showPostModal:false,
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 
@@ -37,7 +41,7 @@ export const PostProvider=({children})=>
     }
 
     return (
-        <PostContext.Provider value={{state,getAllUserPosts}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts}}>
             {children}
         </PostContext.Provider>
     )

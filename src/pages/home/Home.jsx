@@ -14,12 +14,12 @@ export const Home=()=>
 {
     const {state:{userPosts}}=useContext(PostContext);
     const {state:{currentUser}}=useContext(ProfileContext);
-    console.log(userPosts);
+
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />
                 <ul className={styles[`posts-list-container`]}>
-                <CreatePost />    
+                <CreatePost showModal={false}/>    
                 <FilterBar />
                     {userPosts?.map(item=>{
                         const {_id}=item;
