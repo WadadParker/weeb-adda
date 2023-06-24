@@ -6,6 +6,7 @@ import {Sidebar} from "src/components/sidebar/sidebar.jsx";
 import {PostCard} from "src/components/postcard/PostCard.jsx";
 import { FilterBar } from "src/components/filterbar/FilterBar";
 import { SearchBar } from "src/components/searchbar/SearchBar";
+import { CreatePost } from "src/components/createPost/CreatePost";
 
 import styles from "src/pages/home/home.module.css";
 
@@ -18,6 +19,7 @@ export const Home=()=>
         <div className={styles[`home-container`]}>
             <Sidebar />
                 <ul className={styles[`posts-list-container`]}>
+                <CreatePost />    
                 <FilterBar />
                     {userPosts?.map(item=>{
                         const {_id}=item;

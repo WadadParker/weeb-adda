@@ -73,6 +73,7 @@ export const AuthProvider=({children})=>
                 setIsLoggedIn(true);
                 localStorage.setItem("user",response.data.foundUser);
                 localStorage.setItem("token",response.data.encodedToken);
+                getAllUserPosts(username);
                 navigate("/home");
 
             }

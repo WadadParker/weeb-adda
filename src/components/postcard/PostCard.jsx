@@ -14,7 +14,7 @@ export const PostCard=({post})=>
             <header className={styles[`postcard-header-container`]}>
                 <img className={styles.img} src={currentUser?.avatar} alt="" width={100} height={100} />
                 <span className={styles[`header-name`]}>
-                    <strong>{currentUser?.username}</strong>
+                    <strong>{currentUser?.name}</strong>
                     <small>{post?.updatedAt}</small>
                 </span>
                 <FontAwesomeIcon icon={faEllipsis} className={styles.icon}/>
