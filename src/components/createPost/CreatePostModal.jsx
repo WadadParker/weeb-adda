@@ -9,11 +9,11 @@ import { PostContext } from "src/context/PostContext";
 import { CreatePost } from "./CreatePost";
 export const CreatePostModal=()=>
 {
-    const {dispatch}=useContext(PostContext);
+    const {state:{modalContent},dispatch}=useContext(PostContext);
     return (
         <div className={styles.modal}>
             <main className={styles[`post-modal-container`]}>
-            <CreatePost showModal={true}/>
+            <CreatePost showModal={true} content={modalContent}/>
             <FontAwesomeIcon icon={faXmark} className={styles.closeIcon} onClick={()=>dispatch({type:"TOGGLE_POST_MODAL",payload:false})}/>
             </main>
         </div>

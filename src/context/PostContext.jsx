@@ -14,6 +14,12 @@ export const PostProvider=({children})=>
             
             case "TOGGLE_POST_MODAL":
                 return {...post,showPostModal:payload};
+             
+            case "UPDATE_CONTENT":
+                return {...post,content:payload};   
+             
+            case "UPDATE_MODAL_CONTENT":
+                return {...post,modalContent:payload};    
                 
             default:
                 return post;    
@@ -22,6 +28,8 @@ export const PostProvider=({children})=>
     const initialState= {
         userPosts:[],
         showPostModal:false,
+        content:"",
+        modalContent:"",
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 

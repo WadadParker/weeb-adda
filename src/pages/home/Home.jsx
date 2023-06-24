@@ -12,14 +12,14 @@ import styles from "src/pages/home/home.module.css";
 
 export const Home=()=>
 {
-    const {state:{userPosts}}=useContext(PostContext);
+    const {state:{userPosts,content}}=useContext(PostContext);
     const {state:{currentUser}}=useContext(ProfileContext);
 
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />
                 <ul className={styles[`posts-list-container`]}>
-                <CreatePost showModal={false}/>    
+                <CreatePost showModal={false} content={content}/>    
                 <FilterBar />
                     {userPosts?.map(item=>{
                         const {_id}=item;
