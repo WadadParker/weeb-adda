@@ -10,13 +10,21 @@ import { PostContext } from "src/context/PostContext";
 export const CreatePost=({showModal,content})=>
 {
     const {state:{currentUser}}=useContext(ProfileContext);
-    const {dispatch}=useContext(PostContext);
+    const {dispatch,createNewPost}=useContext(PostContext);
     
     const changeHandler=(e)=>
     {
         showModal
         ? dispatch({type:"UPDATE_MODAL_CONTENT",payload:e.target.value})
         : dispatch({type:"UPDATE_CONTENT",payload:e.target.value})
+    }
+    const clickHandler=()=>
+    {
+        console.log(content,"Content is working");
+        createNewPost(content);
+        showModal
+        ? dispatch({type:"UPDATE_MODAL_CONTENT",payload:''})
+        : dispatch({type:"UPDATE_CONTENT",payload:''})
     }
 
     return (
@@ -28,7 +36,7 @@ export const CreatePost=({showModal,content})=>
                     <FontAwesomeIcon icon={faImage} className={styles.icon}/>
                     <FontAwesomeIcon icon={faFaceSmile} className={styles.icon}/>
                 </main>
-                <button className={styles.post}>Post</button>
+                <button className={styles.post} onClick={clickHandler}>Post</button>
             </footer>
         </div>
     )
