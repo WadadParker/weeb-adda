@@ -29,8 +29,6 @@ export const Home=()=>
                             </li>
                         )
                     })}
-                    <li className={styles[`post-list-item`]}><PostCard /></li>
-                    <li className={styles[`post-list-item`]}><PostCard /></li>
                 </ul>
             <SearchBar />    
         </div>

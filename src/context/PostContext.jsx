@@ -20,6 +20,12 @@ export const PostProvider=({children})=>
              
             case "UPDATE_MODAL_CONTENT":
                 return {...post,modalContent:payload};    
+              
+            case "EDIT_POST":
+                return {...post,modalContent:payload?.content ,showPostModal:true,currentPost:payload?.currentPost,editPostFlag:true};    
+              
+            case "UPDATE_POST":
+                return {...post,userPosts:payload ,modalContent:"",showPostModal:false,editPostFlag:false}    
                 
             default:
                 return post;    
@@ -30,6 +36,8 @@ export const PostProvider=({children})=>
         showPostModal:false,
         content:"",
         modalContent:"",
+        currentPost:"",
+        editPostFlag:false,
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 
@@ -51,13 +59,10 @@ export const PostProvider=({children})=>
     const createNewPost= async (content)=>
     {
         const encodedToken=localStorage.getItem("token");
-        // const post= {content};
-        console.log("Yahan se aagge nhi jaa raha hai");
         try {
             const response= await axios.post("/api/posts",{postData: {content}},{headers:{authorization:encodedToken}});
             if(response.status===201)
             {
-                console.log("Yay aarah hai",response.data.posts);
                 dispatch({type:"ALL_USER_POSTS",payload:response.data.posts});
                 dispatch({type:"TOGGLE_POST_MODAL",payload:false});
             }
@@ -66,12 +71,28 @@ export const PostProvider=({children})=>
             console.log(error);
         }
     }
+    const editPost= async (content) =>
+    {
+        const encodedToken=localStorage.getItem("token");
+        const {currentPost}=state;
+        const postData={...currentPost,content:content};
+        try {
+            const response=await axios.post(`/api/posts/edit/${currentPost?._id}`,{postData},{headers:{authorization:encodedToken}})
+            if(response.status===201)
+            {
+                dispatch({type:"UPDATE_POST",payload:response.data.posts});
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 
 
 
 
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost}}>
             {children}
         </PostContext.Provider>
     )

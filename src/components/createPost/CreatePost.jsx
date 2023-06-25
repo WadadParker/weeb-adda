@@ -10,7 +10,7 @@ import { PostContext } from "src/context/PostContext";
 export const CreatePost=({showModal,content})=>
 {
     const {state:{currentUser}}=useContext(ProfileContext);
-    const {dispatch,createNewPost}=useContext(PostContext);
+    const {state:{editPostFlag},dispatch,createNewPost,editPost}=useContext(PostContext);
     
     const changeHandler=(e)=>
     {
@@ -20,11 +20,16 @@ export const CreatePost=({showModal,content})=>
     }
     const clickHandler=()=>
     {
-        console.log(content,"Content is working");
+        if(editPostFlag)
+        {
+            editPost(content);
+        }
+        else {
         createNewPost(content);
         showModal
         ? dispatch({type:"UPDATE_MODAL_CONTENT",payload:''})
         : dispatch({type:"UPDATE_CONTENT",payload:''})
+        }
     }
 
     return (
@@ -36,7 +41,7 @@ export const CreatePost=({showModal,content})=>
                     <FontAwesomeIcon icon={faImage} className={styles.icon}/>
                     <FontAwesomeIcon icon={faFaceSmile} className={styles.icon}/>
                 </main>
-                <button className={styles.post} onClick={clickHandler}>Post</button>
+                <button className={styles.post} onClick={clickHandler}>{editPostFlag?"Update":"Post"}</button>
             </footer>
         </div>
     )
