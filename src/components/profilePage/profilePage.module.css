@@ -11,6 +11,7 @@
     border:2px solid white;
     min-width: 20px;
     min-height: 20px;
+    background-color: white;
 }
 .edit-button {
     font-size: 1.3rem;

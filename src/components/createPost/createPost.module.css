@@ -1,0 +1,90 @@
+.create-post-container {
+    border: 1px solid white;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    background-color: black;
+}
+.create-post-modal{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    background-color: black;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 6px 9px rgb(0, 0, 0);
+}
+.img {
+    background-color: white;
+    border-radius: 50%;
+    margin: 1rem;
+    grid-row: 1/span 2;
+}
+.post {
+    color: black;
+    background-color: white;
+    border: 1px solid white;
+    padding: 0.5rem 1.3rem;
+    margin: 1rem;
+    font-size: 1.4rem;
+    transition: 300ms;
+}
+.post:hover {
+    color: white;
+    background-color: black;
+}
+.input {
+    padding: 1rem;
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+    font-size: 1.2rem;
+    max-width:94%;
+    min-width: 5vw;
+    align-self: stretch;
+    resize: none;
+    outline: none;
+}
+.icon {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    cursor: pointer;
+    transition: 200ms;
+}
+.icon:hover {
+    color:#646cff;
+}
+.footer {
+    display: flex;
+    align-items: center;
+}
+.footer main {
+    flex-grow: 1;
+}
+.modal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255,0.3);
+    position: fixed;
+    z-index: 21;
+}
+.post-modal-container {
+    display: flex;
+    justify-content: center;
+    width: 58vw;
+    height: fit-content;
+    margin-top: 22vh;
+}
+.closeIcon {
+    margin-left: -4rem;
+    font-size: 3rem;
+    padding:  1rem;
+    transition: 200ms;
+}
+.closeIcon:hover {
+    cursor: pointer;
+    color: rgb(235, 33, 33);
+}

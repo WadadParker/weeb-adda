@@ -13,7 +13,7 @@ export const ProfileCard=()=>
     const {currentUser}=state;
     return (
         <div className={styles[`profile-card`]}>
-            <img className={styles[`profile-img`]} src="https://i0.wp.com/wallpapercave.com/wp/wp9174830.jpg" 
+            <img className={styles[`profile-img`]} src={currentUser?.avatar} 
             alt=""
             width={76}
             height={76}/>
