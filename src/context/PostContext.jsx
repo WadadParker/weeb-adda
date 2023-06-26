@@ -102,11 +102,42 @@ export const PostProvider=({children})=>
         }
     }
 
+    const likePost= async(postId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.post(`/api/posts/like/${postId}`,{},{headers:{authorization:encodedToken}});
+            if(response.status===201)
+            {
+                dispatch({type:"ALL_USER_POSTS",payload:response.data.posts});
+            }
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
 
+    const dislikePost= async(postId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.post(`/api/posts/dislike/${postId}`,{},{headers:{authorization:encodedToken}});
+            if(response.status===201)
+            {
+                dispatch({type:"ALL_USER_POSTS",payload:response.data.posts});
+            }
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
+
+    const foundIfLiked=(likedByList,CurrentUsername)=> [...likedByList].find(({username})=>username===CurrentUsername);
+    
 
 
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked}}>
             {children}
         </PostContext.Provider>
     )

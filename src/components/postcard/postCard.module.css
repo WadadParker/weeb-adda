@@ -61,3 +61,8 @@
     color: rgb(240, 32, 32);
     cursor: pointer;
 }
+.heart {
+    font-size: 2rem;
+    cursor: pointer;
+    color: rgb(240, 32, 32);
+}
