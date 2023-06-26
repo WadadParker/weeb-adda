@@ -12,7 +12,7 @@ export const PostCard=({post})=>
 {
     const [showModal,setShowModal]=useState(false);
     const {state:{currentUser}}=useContext(ProfileContext);
-    const {dispatch}=useContext(PostContext);
+    const {dispatch,deletePost}=useContext(PostContext);
 
     const editClickHandler=()=>
     {
@@ -21,6 +21,7 @@ export const PostCard=({post})=>
     }
     const deleteClickHandler=()=>
     {
+        deletePost(post?._id);
         setShowModal(false);
     }
 

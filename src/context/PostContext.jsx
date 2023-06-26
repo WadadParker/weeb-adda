@@ -87,12 +87,26 @@ export const PostProvider=({children})=>
             console.log(error);
         }
     }
+    const deletePost= async(postId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.delete(`/api/posts/${postId}`,{headers:{authorization:encodedToken}},{});
+            if(response.status===201)
+            {
+                dispatch({type:"ALL_USER_POSTS",payload:response.data.posts});
+            }
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
 
 
 
 
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost}}>
             {children}
         </PostContext.Provider>
     )
