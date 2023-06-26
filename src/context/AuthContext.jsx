@@ -49,7 +49,8 @@ export const AuthProvider=({children})=>
             if(response.status===200)
             {
                 setIsLoggedIn(true);
-                profileDispatch({type:"CURRENT_USER",payload:response.data.foundUser})
+                profileDispatch({type:"CURRENT_USER",payload:response.data.foundUser});
+                profileDispatch({type:"BOOKMARKS",payload:response.data.foundUser.bookmarks});
                 localStorage.setItem("user",response.data.foundUser);
                 localStorage.setItem("token",response.data.encodedToken);
                 getAllUserPosts(username);

@@ -51,11 +51,6 @@ export const ProfilePage=({user})=>
                         </li>
                     )
                 })}
-                    <li className={styles_list[`post-list-item`]}><PostCard /></li>
-                    <li className={styles_list[`post-list-item`]}><PostCard /></li>
-                    <li className={styles_list[`post-list-item`]}><PostCard /></li>
-                    <li className={styles_list[`post-list-item`]}><PostCard /></li>
-                    <li className={styles_list[`post-list-item`]}><PostCard /></li>
                 </ul>
 
 

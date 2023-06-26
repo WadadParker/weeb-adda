@@ -19,7 +19,10 @@ export const ProfileProvider=({children})=>
                 return {...profile,editProfile:{avatar:currentUser.avatar,bio:currentUser.bio,websiteLink:currentUser.website},showModal:true};
             
             case "EDIT_PROFILE_FIELDS":
-                return {...profile,editProfile:{...profile.editProfile,[inputField]:payload}};    
+                return {...profile,editProfile:{...profile.editProfile,[inputField]:payload}};  
+                
+            case "BOOKMARKS":
+                return {...profile,bookmarks:payload};    
                  
 
             default:
@@ -31,6 +34,7 @@ export const ProfileProvider=({children})=>
         currentUser:{},
         showModal:false,
         editProfile:{avatar:"",bio:"",websiteLink:""},
+        bookmarks:[],
     }
 
     const [state,dispatch]=useReducer(ProfileReducer,initialState);
@@ -53,8 +57,41 @@ export const ProfileProvider=({children})=>
         }
     }
 
+    const addToBookmarks=async(postId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.post(`/api/users/bookmark/${postId}`,{},{headers:{authorization:encodedToken}});
+            if(response.status===200)
+            {
+              dispatch({type:"BOOKMARKS",payload:response.data.bookmarks});
+            }
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
+
+    const removeFromBookmarks=async(postId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.post(`/api/users/remove-bookmark/${postId}`,{},{headers:{authorization:encodedToken}});
+            if(response.status===200)
+            {
+                dispatch({type:"BOOKMARKS",payload:response.data.bookmarks});
+            }
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
+
+    const findBookmark=(bookmarks,postId)=>[...bookmarks].find(({_id})=>_id==postId);
+
+
     return (
-        <ProfileContext.Provider value={{state,dispatch,editUserProfile}}>
+        <ProfileContext.Provider value={{state,dispatch,editUserProfile,addToBookmarks,removeFromBookmarks,findBookmark}}>
             {children}
         </ProfileContext.Provider>
     )

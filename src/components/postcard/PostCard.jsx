@@ -3,7 +3,7 @@ import {useState} from "react";
 import { useContext } from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical,faComment, faShareNodes, faPenToSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisVertical,faComment, faShareNodes, faPenToSquare,faTrash,faBookmark as bookmark } from "@fortawesome/free-solid-svg-icons";
 import {faHeart as heart} from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { ProfileContext } from "src/context/ProfileContext";
@@ -12,7 +12,7 @@ import { PostContext } from "../../context/PostContext";
 export const PostCard=({post})=>
 {
     const [showModal,setShowModal]=useState(false);
-    const {state:{currentUser}}=useContext(ProfileContext);
+    const {state:{currentUser,bookmarks},addToBookmarks,removeFromBookmarks,findBookmark}=useContext(ProfileContext);
     const {dispatch,deletePost,likePost,dislikePost,foundIfLiked}=useContext(PostContext);
 
     const editClickHandler=()=>
@@ -57,7 +57,9 @@ export const PostCard=({post})=>
                     <small>2</small>
                 </span>
                 <FontAwesomeIcon icon={faShareNodes} className={styles.icon} />
-                <FontAwesomeIcon icon={faBookmark} className={styles.icon} />
+                {findBookmark(bookmarks,post?._id)
+                ?<FontAwesomeIcon icon={bookmark} className={styles.bookmark} onClick={()=>removeFromBookmarks(post?._id)}/>
+                :<FontAwesomeIcon icon={faBookmark} className={styles.icon} onClick={()=>addToBookmarks(post?._id)}/>}
             </footer>
         </div>
     )
