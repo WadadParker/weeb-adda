@@ -26,6 +26,9 @@ export const PostProvider=({children})=>
               
             case "UPDATE_POST":
                 return {...post,userPosts:payload ,modalContent:"",showPostModal:false,editPostFlag:false}    
+              
+            case "ALL_USERS":
+                return {...post,allUsers:payload}
                 
             default:
                 return post;    
@@ -38,16 +41,16 @@ export const PostProvider=({children})=>
         modalContent:"",
         currentPost:"",
         editPostFlag:false,
+        allUsers:[],
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 
-    const getAllUserPosts= async (username)=>
+    const getAllUserPosts= async ()=>
     {
         try {
-            const response=await axios.get(`/api/posts/user/${username}`);
+            const response=await axios.get(`/api/posts`);
             if(response.status===200)
             {
-                console.log("working",response.data.posts);
                 dispatch({type:"ALL_USER_POSTS",payload:response.data.posts})
             }
         }
@@ -133,11 +136,24 @@ export const PostProvider=({children})=>
     }
 
     const foundIfLiked=(likedByList,CurrentUsername)=> [...likedByList].find(({username})=>username===CurrentUsername);
+
+    const getAllUsers=async ()=>
+    {
+        try {
+            const response=await axios.get("/api/users")
+            if(response.status===200)
+            {
+                dispatch({type:"ALL_USERS",payload:response.data.users});
+            }
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
     
 
-
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked,getAllUsers}}>
             {children}
         </PostContext.Provider>
     )

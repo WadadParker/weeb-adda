@@ -25,7 +25,9 @@ export const Home=()=>
                         const {_id}=item;
                         return (
                             <li key={_id} className={styles[`post-list-item`]}>
-                                <PostCard post={item}/>
+                                {item?.username===currentUser?.username
+                                ?<PostCard post={item} isCurrentUser={true}/>
+                                :<PostCard post={item} username={item?.username} isCurrentUser={false}/>}
                             </li>
                         )
                     })}
