@@ -1,19 +1,20 @@
 import styles from "src/components/postcard/postCard.module.css";
-import {useState} from "react";
-import { useContext } from "react";
+import {useState, useContext} from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical,faComment, faShareNodes, faPenToSquare,faTrash,faBookmark as bookmark } from "@fortawesome/free-solid-svg-icons";
 import {faHeart as heart} from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { ProfileContext } from "src/context/ProfileContext";
-import { PostContext } from "../../context/PostContext";
+import { PostContext } from "src/context/PostContext";
 
 export const PostCard=({post,username,isCurrentUser})=>
 {
     const [showModal,setShowModal]=useState(false);
     const {state:{currentUser,bookmarks},addToBookmarks,removeFromBookmarks,findBookmark}=useContext(ProfileContext);
-    const {dispatch,deletePost,likePost,dislikePost,foundIfLiked,state:{allUsers}}=useContext(PostContext);
+    const {dispatch,deletePost,likePost,dislikePost,foundIfLiked,getPostsOfUser,state:{allUsers}}=useContext(PostContext);
+    const navigate=useNavigate();
 
     const user=[...allUsers]?.find(({username:searchedUsername})=>searchedUsername===username)
 
@@ -27,13 +28,18 @@ export const PostCard=({post,username,isCurrentUser})=>
         deletePost(post?._id);
         setShowModal(false);
     }
+    const usernameClickHandler=()=>
+    {
+        getPostsOfUser(username);
+        navigate(`/profile/${post?.username}`);
+    }
 
     return (
         <div className={styles[`postcard-container`]}>
             <header className={styles[`postcard-header-container`]}>
                 <img className={styles.img} src={isCurrentUser?currentUser?.avatar:user?.avatar} alt="" width={100} height={100} />
                 <span className={styles[`header-name`]}>
-                    <strong>{isCurrentUser?currentUser?.name:user?.name}</strong>
+                    <strong className={styles.name} onClick={()=>usernameClickHandler()}>{isCurrentUser?currentUser?.name:user?.name}</strong>
                     <small>{post?.createdAt}</small>
                 </span>
                 {isCurrentUser && <main className={styles[`icons-container`]}>

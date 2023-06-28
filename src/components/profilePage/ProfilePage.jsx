@@ -1,6 +1,6 @@
 import styles from "./profilePage.module.css";
 import styles_list from "src/pages/home/home.module.css";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
@@ -10,13 +10,19 @@ import { AuthContext } from "src/context/AuthContext";
 import { ProfileContext } from "src/context/ProfileContext";
 import { PostContext } from "src/context/PostContext";
 import { EditUser } from "src/components/editUser/EditUser";
+import {Loader} from "src/components/loader/Loader";
 
-export const ProfilePage=({user})=>
+export const ProfilePage=({user,isCurrentUser})=>
 {
+    const [isLoading,setIsLoading]=useState(true);
     const {logoutHandler}=useContext(AuthContext);
     const {state,dispatch}=useContext(ProfileContext);
     const {showModal}=state;
-    const {state:{userPosts}}=useContext(PostContext);
+    const {state:{allPostsOfUser},getPostsOfUser}=useContext(PostContext);
+
+    useEffect(() => {
+           getPostsOfUser(user?.username, setIsLoading);      
+      }, [user?.username]);
 
     return (<>
         {showModal && <EditUser />}
@@ -26,7 +32,7 @@ export const ProfilePage=({user})=>
             <header className={styles[`profile-header-container`]}>
                 <img className={styles.pfp} alt="" src={user?.avatar} width={150} height={150}/>
 
-                <button className={styles[`edit-button`]} onClick={()=>dispatch({type:"OPEN_EDIT_PROFILE"})}>Edit Profile</button>
+                {isCurrentUser && <button className={styles[`edit-button`]} onClick={()=>dispatch({type:"OPEN_EDIT_PROFILE"})}>Edit Profile</button>}
                 <main className={styles.main}>
                     <strong>{user?.name}</strong>
                     <span>@{user?.username}</span>
@@ -38,20 +44,21 @@ export const ProfilePage=({user})=>
                 <a href={user?.website} target="_blank"> <FontAwesomeIcon icon={faGlobe} />  Website</a>
                 <p>0 Posts | 0 Following | 0 Followers</p>
             </footer>    
-            <button className={styles[`logout-button`]} onClick={logoutHandler}>Logout</button>
+            {isCurrentUser && <button className={styles[`logout-button`]} onClick={logoutHandler}>Logout</button>}
             <hr className={styles.hr}/>
             <h1>Posts</h1>
 
-            <ul className={styles_list[`posts-list-container`]}>
-                {userPosts?.map(item=>{
+            {isLoading?<Loader />
+            :<ul className={styles_list[`posts-list-container`]}>
+                {allPostsOfUser.map(item=>{
                     const {_id}=item;
                     return (
                         <li key={_id} className={styles_list[`post-list-item`]}>
-                            <PostCard post={item}/>
+                            <PostCard post={item} username={user?.username}/>
                         </li>
                     )
                 })}
-                </ul>
+                </ul>}
 
 
         </div>

@@ -28,7 +28,10 @@ export const PostProvider=({children})=>
                 return {...post,userPosts:payload ,modalContent:"",showPostModal:false,editPostFlag:false}    
               
             case "ALL_USERS":
-                return {...post,allUsers:payload}
+                return {...post,allUsers:payload};
+               
+            case "ALL_POSTS_OF_USER":
+                return {...post,allPostsOfUser:payload};    
                 
             default:
                 return post;    
@@ -42,6 +45,7 @@ export const PostProvider=({children})=>
         currentPost:"",
         editPostFlag:false,
         allUsers:[],
+        allPostsOfUser:[],
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 
@@ -151,9 +155,24 @@ export const PostProvider=({children})=>
         }
     }
     
+    const getPostsOfUser=async (username,setIsLoading)=>
+    {
+        try {
+            const response=await axios.get(`/api/posts/user/${username}`)
+            if(response.status===200)
+                dispatch({type:"ALL_POSTS_OF_USER",payload:response.data.posts});
+                setIsLoading(false);
+                return response.data.posts;
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    
 
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked,getAllUsers}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked,getAllUsers,getPostsOfUser}}>
             {children}
         </PostContext.Provider>
     )
