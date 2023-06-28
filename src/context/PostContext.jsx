@@ -155,14 +155,12 @@ export const PostProvider=({children})=>
         }
     }
     
-    const getPostsOfUser=async (username,setIsLoading)=>
+    const getPostsOfUser=async (username)=>
     {
         try {
             const response=await axios.get(`/api/posts/user/${username}`)
             if(response.status===200)
                 dispatch({type:"ALL_POSTS_OF_USER",payload:response.data.posts});
-                setIsLoading(false);
-                return response.data.posts;
         }
         catch(error)
         {

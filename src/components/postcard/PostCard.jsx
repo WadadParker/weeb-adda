@@ -1,5 +1,5 @@
 import styles from "src/components/postcard/postCard.module.css";
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -33,6 +33,9 @@ export const PostCard=({post,username,isCurrentUser})=>
         getPostsOfUser(username);
         navigate(`/profile/${post?.username}`);
     }
+    // useEffect(()=>{
+    //     getPostsOfUser(username);
+    // },[post?.content,post?.likes?.likeCount,bookmarks.length]);
 
     return (
         <div className={styles[`postcard-container`]}>
