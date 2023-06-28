@@ -16,8 +16,8 @@ export const ProfilePage=({user,isCurrentUser})=>
 {
     const [isLoading,setIsLoading]=useState(true);
     const {logoutHandler}=useContext(AuthContext);
-    const {state,dispatch}=useContext(ProfileContext);
-    const {showModal}=state;
+    const {state,dispatch,findIfFollowing,followUser,unfollowUser}=useContext(ProfileContext);
+    const {showModal,currentUser}=state;
     const {state:{allPostsOfUser},getPostsOfUser}=useContext(PostContext);
 
     useEffect(() => {
@@ -33,6 +33,9 @@ export const ProfilePage=({user,isCurrentUser})=>
                 <img className={styles.pfp} alt="" src={user?.avatar} width={150} height={150}/>
 
                 {isCurrentUser && <button className={styles[`edit-button`]} onClick={()=>dispatch({type:"OPEN_EDIT_PROFILE"})}>Edit Profile</button>}
+                {findIfFollowing(user?.username,currentUser)
+                ?<button className={styles[`unfollow-button`]} onClick={()=>unfollowUser(user?._id)}>Unfollow</button>
+                :<button className={styles[`follow-button`]} onClick={()=>followUser(user?._id)}>Follow</button>}
                 <main className={styles.main}>
                     <strong>{user?.name}</strong>
                     <span>@{user?.username}</span>
@@ -41,7 +44,7 @@ export const ProfilePage=({user,isCurrentUser})=>
             
             <footer className={styles[`footer-container`]}>
                 <p>{user?.bio}</p>
-                <a href={user?.website} target="_blank"> <FontAwesomeIcon icon={faGlobe} />  Website</a>
+                <a href={`https://${user?.website}`} target="_blank"> <FontAwesomeIcon icon={faGlobe} />  Website</a>
                 <p>0 Posts | 0 Following | 0 Followers</p>
             </footer>    
             {isCurrentUser && <button className={styles[`logout-button`]} onClick={logoutHandler}>Logout</button>}
