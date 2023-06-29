@@ -1,6 +1,6 @@
 import styles from "./profilePage.module.css";
 import styles_list from "src/pages/home/home.module.css";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
@@ -14,18 +14,12 @@ import {Loader} from "src/components/loader/Loader";
 
 export const ProfilePage=({user,isCurrentUser})=>
 {
-    const [isLoading,setIsLoading]=useState(false);
     const {logoutHandler}=useContext(AuthContext);
     const {state,dispatch,findIfFollowing,followUser,unfollowUser}=useContext(ProfileContext);
     const {showModal,currentUser}=state;
-    const {state:{allPostsOfUser,userPosts},getPostsOfUser}=useContext(PostContext);
+    const {state:{userPosts}}=useContext(PostContext);
 
     const currentUserPosts=[...userPosts].filter(({username})=>username===user?.username);
-
-    // useEffect(() => {
-    //        getPostsOfUser(user?.username)
-    //        .then(()=> setIsLoading(false))    
-    //   }, [user?.username,allPostsOfUser]);
 
     return (<>
         {showModal && <EditUser />}

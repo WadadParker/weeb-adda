@@ -283,7 +283,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     avatar:"https://pbs.twimg.com/media/EJDFa5-XkAANy-s.jpg",
-    bio:`Leaf Village Shinobi || I also like ramen... || I hope he is completes his dream >_< `,
+    bio:`Leaf Village Shinobi || I also like ramen... || I hope he completes his dream >_< `,
     website:"www.google.com",
     bookmarks: [],
     followers:[],
