@@ -20,3 +20,11 @@
 .latest {
     padding-right: 1rem;
 }
+.icon-active {
+    margin: 0 1rem;
+    color: #535bf2;
+}
+.filter-container p:hover {
+    cursor: pointer;
+    color: #535bf2;
+}

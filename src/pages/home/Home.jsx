@@ -12,16 +12,18 @@ import styles from "src/pages/home/home.module.css";
 
 export const Home=()=>
 {
-    const {state:{userPosts,content}}=useContext(PostContext);
+    const {state:{userPosts,content},sortedPosts}=useContext(PostContext);
     const {state:{currentUser}}=useContext(ProfileContext);
 
+    const followingUsers = userPosts.filter(user => currentUser?.following.some(followedUser => followedUser.username === user.username || user.username===currentUser?.username));
+  
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />
                 <ul className={styles[`posts-list-container`]}>
                 <CreatePost showModal={false} content={content}/>    
                 <FilterBar />
-                    {userPosts?.map(item=>{
+                    {sortedPosts(followingUsers)?.map(item=>{
                         const {_id}=item;
                         return (
                             <li key={_id} className={styles[`post-list-item`]}>

@@ -32,6 +32,9 @@ export const PostProvider=({children})=>
                
             case "ALL_POSTS_OF_USER":
                 return {...post,allPostsOfUser:payload};    
+              
+            case "TOGGLE_SORT":
+                return {...post,sortByLatest:payload};    
                 
             default:
                 return post;    
@@ -46,6 +49,7 @@ export const PostProvider=({children})=>
         editPostFlag:false,
         allUsers:[],
         allPostsOfUser:[],
+        sortByLatest:true,
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 
@@ -167,10 +171,21 @@ export const PostProvider=({children})=>
             console.log(error);
         }
     }
-    
+    const sortedPosts=(posts)=>
+    {
+        const {sortByLatest}=state;
+        if(sortByLatest)
+        {
+            return [...posts].sort((a,b)=>Date.parse(b.createdAt) - Date.parse(a.createdAt));
+        }
+        else 
+        {
+            return [...posts].sort((a,b)=>b.likes.likeCount - a.likes.likeCount)
+        }
+    }
 
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked,getAllUsers,getPostsOfUser}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked,getAllUsers,getPostsOfUser,sortedPosts}}>
             {children}
         </PostContext.Provider>
     )
