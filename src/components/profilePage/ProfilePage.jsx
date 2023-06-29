@@ -45,7 +45,7 @@ export const ProfilePage=({user,isCurrentUser})=>
                 <a href={`https://${user?.website}`} target="_blank"> <FontAwesomeIcon icon={faGlobe} />  Website</a>
                 {isCurrentUser
                 ?<p>{currentUserPosts.length} Posts | {currentUser?.following.length} Following | {currentUser?.followers.length} Followers</p>
-                :<p>{currentUserPosts.length} Posts | 0 Following | 0 Followers</p>}
+                :<p>{currentUserPosts.length} Posts | {user?.following.length} Following | {user?.followers.length} Followers</p>}
             </footer>    
             {isCurrentUser && <button className={styles[`logout-button`]} onClick={logoutHandler}>Logout</button>}
             <hr className={styles.hr}/>

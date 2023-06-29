@@ -33,9 +33,6 @@ export const PostCard=({post,username,isCurrentUser})=>
         getPostsOfUser(username);
         navigate(`/profile/${post?.username}`);
     }
-    // useEffect(()=>{
-    //     getPostsOfUser(username);
-    // },[post?.content,post?.likes?.likeCount,bookmarks.length]);
 
     return (
         <div className={styles[`postcard-container`]}>
@@ -43,7 +40,12 @@ export const PostCard=({post,username,isCurrentUser})=>
                 <img className={styles.img} src={isCurrentUser?currentUser?.avatar:user?.avatar} alt="" width={100} height={100} />
                 <span className={styles[`header-name`]}>
                     <strong className={styles.name} onClick={()=>usernameClickHandler()}>{isCurrentUser?currentUser?.name:user?.name}</strong>
-                    <small>{post?.createdAt}</small>
+                    <small>{new Date(post?.createdAt).toLocaleDateString("en-us", {
+                            day: "numeric",
+                            year: "numeric",
+                            month: "short",
+                            })}
+                     </small>
                 </span>
                 {isCurrentUser && <main className={styles[`icons-container`]}>
                 {showModal && <div className={styles.modal}>

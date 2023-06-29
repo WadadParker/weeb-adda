@@ -1,5 +1,5 @@
 import styles from "./profile.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import {Sidebar} from "src/components/sidebar/sidebar.jsx";
@@ -12,10 +12,12 @@ export const Profile=()=>
 {
     const {state}=useContext(ProfileContext);
     const {currentUser}=state;
-    const {state:{allUsers}}=useContext(PostContext);
+    const {state:{allUsers},getAllUsers}=useContext(PostContext);
 
     const {username}=useParams();
     const user=[...allUsers]?.find(({username:searchedUsername})=>searchedUsername===username);
+
+    useEffect(()=>{getAllUsers()},[user?.followers]);
    
     return (
         <div className={styles[`profile-container`]}>

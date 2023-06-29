@@ -53,7 +53,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "zoro",
-    createdAt: formatDate(),
+    createdAt: "2023-06-03T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -66,7 +66,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "zoro",
-    createdAt: formatDate(),
+    createdAt: "2023-06-03T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -79,7 +79,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "zenitsu",
-    createdAt: formatDate(),
+    createdAt: "2023-06-04T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -92,7 +92,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "naruto",
-    createdAt: formatDate(),
+    createdAt: "2023-06-12T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -105,7 +105,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "dectiveanya",
-    createdAt: formatDate(),
+    createdAt: "2023-06-13T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -118,7 +118,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "asta",
-    createdAt: formatDate(),
+    createdAt: "2023-06-11T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -181,7 +181,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "priceofsaiyans",
-    createdAt: formatDate(),
+    createdAt: "2023-06-14T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -194,7 +194,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "eren",
-    createdAt: formatDate(),
+    createdAt: "2023-06-14T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -207,7 +207,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "iloveereh",
-    createdAt: formatDate(),
+    createdAt: "2023-06-15T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -220,7 +220,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "ayanokouji",
-    createdAt: formatDate(),
+    createdAt: "2023-06-16T01:06:00+05:30",
     updatedAt: formatDate(),
   },
 ];
