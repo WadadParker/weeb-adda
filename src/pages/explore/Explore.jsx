@@ -1,29 +1,24 @@
+import styles from "src/pages/home/home.module.css";
 import { useContext } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
 import {Sidebar} from "src/components/sidebar/sidebar.jsx";
-import {PostCard} from "src/components/postcard/PostCard.jsx";
-import { FilterBar } from "src/components/filterbar/FilterBar";
 import { SearchBar } from "src/components/searchbar/SearchBar";
-import { CreatePost } from "src/components/createPost/CreatePost";
+import { FilterBar } from "src/components/filterbar/FilterBar";
+import {PostCard} from "src/components/postcard/PostCard.jsx";
 
-import styles from "src/pages/home/home.module.css";
-
-export const Home=()=>
+export const Explore=()=>
 {
-    const {state:{userPosts,content},sortedPosts}=useContext(PostContext);
+    const {state:{userPosts},sortedPosts}=useContext(PostContext);
     const {state:{currentUser}}=useContext(ProfileContext);
-
-    const followingUsers = userPosts.filter(user => currentUser?.following.some(followedUser => followedUser.username === user.username || user.username===currentUser?.username));
-  
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />
-                <ul className={styles[`posts-list-container`]}>
-                <CreatePost showModal={false} content={content}/>    
+            <ul className={styles[`posts-list-container`]}> 
+                <h1 className={styles.explore}>Explore</h1>
                 <FilterBar />
-                    {sortedPosts(followingUsers)?.map(item=>{
+                    {sortedPosts(userPosts)?.map(item=>{
                         const {_id}=item;
                         return (
                             <li key={_id} className={styles[`post-list-item`]}>
@@ -34,7 +29,7 @@ export const Home=()=>
                         )
                     })}
                 </ul>
-            <SearchBar />    
+            <SearchBar />
         </div>
     )
 }

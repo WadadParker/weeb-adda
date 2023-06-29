@@ -4,14 +4,16 @@
         "search"
         "list";
     align-self: start;
-    margin-right: 3%;
+    margin-right: 1%;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
+    
 }
 .suggested-users-list {
     list-style: none;
     grid-area:list ;
+    width: 90%;
 }
 .input {
     grid-area: search;

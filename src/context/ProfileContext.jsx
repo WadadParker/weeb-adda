@@ -31,7 +31,7 @@ export const ProfileProvider=({children})=>
     }
 
     const initialState={
-        currentUser:{},
+        currentUser:{following:[]},
         showModal:false,
         editProfile:{avatar:"",bio:"",websiteLink:""},
         bookmarks:[],
@@ -89,9 +89,40 @@ export const ProfileProvider=({children})=>
 
     const findBookmark=(bookmarks,postId)=>[...bookmarks].find(({_id})=>_id==postId);
 
+    const findIfFollowing=(profileUsername,currentUser)=>[...currentUser?.following].find(({username})=>username===profileUsername);
+
+    const followUser=async (followUserId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.post(`/api/users/follow/${followUserId}`,{},{headers:{authorization:encodedToken}});
+            if(response.status===200)
+            {
+                dispatch({type:"CURRENT_USER",payload:response.data.user});
+            }
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    const unfollowUser= async(followUserId)=>
+    {
+        const encodedToken=localStorage.getItem("token");
+        try {
+            const response=await axios.post(`/api/users/unfollow/${followUserId}`,{},{headers:{authorization:encodedToken}});
+            if(response.status===200)
+            {
+                dispatch({type:"CURRENT_USER",payload:response.data.user});
+            }
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 
     return (
-        <ProfileContext.Provider value={{state,dispatch,editUserProfile,addToBookmarks,removeFromBookmarks,findBookmark}}>
+        <ProfileContext.Provider value={{state,dispatch,editUserProfile,addToBookmarks,removeFromBookmarks,findBookmark,findIfFollowing,followUser,unfollowUser}}>
             {children}
         </ProfileContext.Provider>
     )

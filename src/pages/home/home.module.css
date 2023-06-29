@@ -22,9 +22,21 @@
     min-width: 10rem;
     
 }
-/* .user-feed-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50rem;
-} */
+.bookmark, .explore {
+    text-decoration: underline;
+}
+.noEnemies {
+    position: relative;
+    display: inline-block;
+    color: #646cff;
+  }
+  
+  .noEnemies::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 1.07rem;
+    width: 100%;
+    height: 5px;
+    background-color: white;
+  }

@@ -17,9 +17,9 @@ export const Sidebar=()=>
             <FontAwesomeIcon icon={faHouse} />
             <Link to="/home">Home</Link>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <Link>Explore</Link>
+            <Link to="/explore">Explore</Link>
             <FontAwesomeIcon icon={faBookmark} />
-            <Link>Bookmark</Link>
+            <Link to="/bookmark">Bookmark</Link>
             <FontAwesomeIcon icon={faUser} />
             <Link>Profile</Link>
             <button className={styles[`new-post-button`]} onClick={()=>dispatch({type:"TOGGLE_POST_MODAL",payload:true})}>Create New Post</button>

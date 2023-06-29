@@ -12,7 +12,7 @@ export const AuthProvider=({children})=>
     const [isLoggedIn,setIsLoggedIn]=useState(false);
     const navigate=useNavigate();
     const {dispatch:profileDispatch}=useContext(ProfileContext);
-    const {getAllUserPosts}=useContext(PostContext);
+    const {getAllUserPosts,getAllUsers}=useContext(PostContext);
 
     const AuthReducer=(state,{type,payload,inputField})=>
     {
@@ -53,7 +53,8 @@ export const AuthProvider=({children})=>
                 profileDispatch({type:"BOOKMARKS",payload:response.data.foundUser.bookmarks});
                 localStorage.setItem("user",response.data.foundUser);
                 localStorage.setItem("token",response.data.encodedToken);
-                getAllUserPosts(username);
+                getAllUserPosts();
+                getAllUsers();
                 navigate("/home");
 
             }

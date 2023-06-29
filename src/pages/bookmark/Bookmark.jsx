@@ -1,29 +1,27 @@
+import styles from "src/pages/home/home.module.css";
+
 import { useContext } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
 import {Sidebar} from "src/components/sidebar/sidebar.jsx";
-import {PostCard} from "src/components/postcard/PostCard.jsx";
-import { FilterBar } from "src/components/filterbar/FilterBar";
 import { SearchBar } from "src/components/searchbar/SearchBar";
-import { CreatePost } from "src/components/createPost/CreatePost";
+import {PostCard} from "src/components/postcard/PostCard.jsx";
 
-import styles from "src/pages/home/home.module.css";
-
-export const Home=()=>
+export const Bookmark=()=>
 {
-    const {state:{userPosts,content},sortedPosts}=useContext(PostContext);
-    const {state:{currentUser}}=useContext(ProfileContext);
+    const {state:{currentUser,bookmarks}}=useContext(ProfileContext);
+    const {state:{userPosts}}=useContext(PostContext);
 
-    const followingUsers = userPosts.filter(user => currentUser?.following.some(followedUser => followedUser.username === user.username || user.username===currentUser?.username));
-  
+    const bookmarkedPosts=bookmarks.map(item=> [...userPosts].find(({_id})=>_id===item?._id));
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />
-                <ul className={styles[`posts-list-container`]}>
-                <CreatePost showModal={false} content={content}/>    
-                <FilterBar />
-                    {sortedPosts(followingUsers)?.map(item=>{
+            <ul className={styles[`posts-list-container`]}> 
+                <h1 className={styles.bookmark}>Bookmarks</h1>
+                    {bookmarkedPosts.length===0
+                    ? <h1>You have no <span className={styles.noEnemies}>enemies</span> Bookmarks</h1>
+                    : bookmarkedPosts?.map(item=>{
                         const {_id}=item;
                         return (
                             <li key={_id} className={styles[`post-list-item`]}>
@@ -34,7 +32,7 @@ export const Home=()=>
                         )
                     })}
                 </ul>
-            <SearchBar />    
+            <SearchBar />
         </div>
     )
 }

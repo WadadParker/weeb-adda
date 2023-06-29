@@ -75,3 +75,12 @@
     cursor: pointer;
     color: #535bf2;
 }
+.icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.name {
+    cursor: pointer;
+    font-size: 1.3rem;
+}

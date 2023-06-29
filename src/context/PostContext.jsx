@@ -26,6 +26,15 @@ export const PostProvider=({children})=>
               
             case "UPDATE_POST":
                 return {...post,userPosts:payload ,modalContent:"",showPostModal:false,editPostFlag:false}    
+              
+            case "ALL_USERS":
+                return {...post,allUsers:payload};
+               
+            case "ALL_POSTS_OF_USER":
+                return {...post,allPostsOfUser:payload};    
+              
+            case "TOGGLE_SORT":
+                return {...post,sortByLatest:payload};    
                 
             default:
                 return post;    
@@ -38,16 +47,18 @@ export const PostProvider=({children})=>
         modalContent:"",
         currentPost:"",
         editPostFlag:false,
+        allUsers:[],
+        allPostsOfUser:[],
+        sortByLatest:true,
     }
     const [state,dispatch]=useReducer(PostReducer,initialState);
 
-    const getAllUserPosts= async (username)=>
+    const getAllUserPosts= async ()=>
     {
         try {
-            const response=await axios.get(`/api/posts/user/${username}`);
+            const response=await axios.get(`/api/posts`);
             if(response.status===200)
             {
-                console.log("working",response.data.posts);
                 dispatch({type:"ALL_USER_POSTS",payload:response.data.posts})
             }
         }
@@ -133,11 +144,48 @@ export const PostProvider=({children})=>
     }
 
     const foundIfLiked=(likedByList,CurrentUsername)=> [...likedByList].find(({username})=>username===CurrentUsername);
-    
 
+    const getAllUsers=async ()=>
+    {
+        try {
+            const response=await axios.get("/api/users")
+            if(response.status===200)
+            {
+                dispatch({type:"ALL_USERS",payload:response.data.users});
+            }
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    
+    const getPostsOfUser=async (username)=>
+    {
+        try {
+            const response=await axios.get(`/api/posts/user/${username}`)
+            if(response.status===200)
+                dispatch({type:"ALL_POSTS_OF_USER",payload:response.data.posts});
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    const sortedPosts=(posts)=>
+    {
+        const {sortByLatest}=state;
+        if(sortByLatest)
+        {
+            return [...posts].sort((a,b)=>Date.parse(b.createdAt) - Date.parse(a.createdAt));
+        }
+        else 
+        {
+            return [...posts].sort((a,b)=>b.likes.likeCount - a.likes.likeCount)
+        }
+    }
 
     return (
-        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked}}>
+        <PostContext.Provider value={{state,dispatch,getAllUserPosts,createNewPost,editPost,deletePost,likePost,dislikePost,foundIfLiked,getAllUsers,getPostsOfUser,sortedPosts}}>
             {children}
         </PostContext.Provider>
     )
