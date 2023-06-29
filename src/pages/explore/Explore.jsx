@@ -10,12 +10,13 @@ import {PostCard} from "src/components/postcard/PostCard.jsx";
 
 export const Explore=()=>
 {
-    const {state:{userPosts,content}}=useContext(PostContext);
+    const {state:{userPosts}}=useContext(PostContext);
     const {state:{currentUser}}=useContext(ProfileContext);
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />
             <ul className={styles[`posts-list-container`]}> 
+                <h1 className={styles.explore}>Explore</h1>
                 <FilterBar />
                     {userPosts?.map(item=>{
                         const {_id}=item;

@@ -1,14 +1,37 @@
-import styles from "./bookmark.module.css";
+import styles from "src/pages/home/home.module.css";
+
+import { useContext } from "react";
+import { PostContext } from "src/context/PostContext";
+import { ProfileContext } from "src/context/ProfileContext";
 
 import {Sidebar} from "src/components/sidebar/sidebar.jsx";
 import { SearchBar } from "src/components/searchbar/SearchBar";
+import {PostCard} from "src/components/postcard/PostCard.jsx";
 
 export const Bookmark=()=>
 {
+    const {state:{currentUser,bookmarks}}=useContext(ProfileContext);
+    const {state:{userPosts}}=useContext(PostContext);
+
+    const bookmarkedPosts=bookmarks.map(item=> [...userPosts].find(({_id})=>_id===item?._id));
     return (
-        <div>
+        <div className={styles[`home-container`]}>
             <Sidebar />
-            This is Bookmark Page;
+            <ul className={styles[`posts-list-container`]}> 
+                <h1 className={styles.bookmark}>Bookmarks</h1>
+                    {bookmarkedPosts.length===0
+                    ? <h1>You have no <span className={styles.noEnemies}>enemies</span> Bookmarks</h1>
+                    : bookmarkedPosts?.map(item=>{
+                        const {_id}=item;
+                        return (
+                            <li key={_id} className={styles[`post-list-item`]}>
+                                {item?.username===currentUser?.username
+                                ?<PostCard post={item} isCurrentUser={true}/>
+                                :<PostCard post={item} username={item?.username} isCurrentUser={false}/>}
+                            </li>
+                        )
+                    })}
+                </ul>
             <SearchBar />
         </div>
     )
