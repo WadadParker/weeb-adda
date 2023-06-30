@@ -1,7 +1,7 @@
 import styles from "./loginPage.module.css";
 import { useContext } from "react";
 
-import logo from "src/assets/background.jpg";
+import { Loader } from "src/components/loader/Loader";
 import { AuthContext } from "src/context/AuthContext";
 
 export const LoginPage=()=>
@@ -11,9 +11,13 @@ export const LoginPage=()=>
 
     return (
         <div className={styles[`landing-page-container`]}>
-            
+            <nav className={styles.nav}>
+                <h1 className={styles.weeb}>Weeb </h1>
+                <Loader />
+                <h1 className={styles.adda}> Adda</h1>
+            </nav>
             <header className={styles.header}>
-                <h1 style={{fontSize:"7rem",margin:"0"}}>Weeb Adda</h1>
+                
                 <main className={styles[`login-container`]}>
                     <h2>Login</h2>
                     <label htmlFor="username">Username</label>
@@ -28,7 +32,6 @@ export const LoginPage=()=>
                     <a href="/signup">Create new account</a>
                 </main>
             </header>
-            <img alt="" src={logo} className={styles.img}/>
         </div>
     )
 }

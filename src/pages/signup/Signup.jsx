@@ -1,11 +1,12 @@
 import styles from "./signup.module.css";
-import logo from "src/assets/one-piece-logo.jpg";
+import navStyle from "src/pages/signup/signup.module.css";
 import { useContext } from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthContext } from "src/context/AuthContext";
+import { Loader } from "src/components/loader/Loader";
 
 export const Signup=()=>
 {
@@ -14,8 +15,9 @@ export const Signup=()=>
     return (
         <div className={styles[`landing-page-container`]}>
             <header className={styles.header}>
-                <h1>Weeb Adda</h1>
-                <img alt="" src={logo} width={150} height={150}/>
+                <h1>Weeb </h1>
+                <Loader />
+                <h1 className={styles.adda}> Adda</h1>
             </header>
             <main className={styles[`signup-container`]}>
                 <h2>Signup</h2>

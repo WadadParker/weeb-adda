@@ -12,5 +12,6 @@
     }
   }
 .loader img {
-    animation: spin 1.4s linear infinite;
+    animation: spin 5s linear infinite;
+    border-radius: 50%;
 }  
