@@ -1,4 +1,4 @@
-import styles from "src/components/filterbar/filterbar.module.css";
+import styles from "src/components/filterbar/filterBar.module.css";
 import { useContext } from "react";
 import { PostContext } from "src/context/PostContext";
 
