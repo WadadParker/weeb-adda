@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
@@ -17,6 +17,10 @@ export const Home=()=>
 
     const followingUsers = userPosts.filter(user => currentUser?.following.some(followedUser => followedUser.username === user.username || user.username===currentUser?.username));
   
+    useEffect(()=>{ 
+        window.scrollTo(0, 0)
+   },[])
+
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />

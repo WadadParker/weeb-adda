@@ -18,6 +18,9 @@ export const Profile=()=>
     const user=[...allUsers]?.find(({username:searchedUsername})=>searchedUsername===username);
 
     useEffect(()=>{getAllUsers()},[user?.followers]);
+    useEffect(()=>{ 
+        window.scrollTo(0, 0)
+   },[username]);
    
     return (
         <div className={styles[`profile-container`]}>

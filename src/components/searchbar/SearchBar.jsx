@@ -1,6 +1,6 @@
 import styles from "src/components/searchbar/searchBar.module.css"
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
@@ -21,6 +21,9 @@ export const SearchBar=()=>
         navigate(`/profile/${username}`)
         dispatch({type:"UPDATE_SEARCH",payload:""});
     }
+    useEffect(()=>{ 
+        window.scrollTo(0, 0)
+   },[])
 
     return (
         <div className={styles[`search-users-container`]}>
