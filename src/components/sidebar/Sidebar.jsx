@@ -7,10 +7,13 @@ import styles from "src/components/sidebar/sideBar.module.css";
 
 import { ProfileCard } from "src/components/profileCard/ProfileCard";
 import { PostContext } from "src/context/PostContext";
+import {ProfileContext} from "src/context/ProfileContext";
 
 export const Sidebar=()=>
 {
     const {dispatch}=useContext(PostContext);
+    const {state:{currentUser}}=useContext(ProfileContext);
+
     return (
         <div className={styles[`sidebar-container`]}>
         <header className={styles[`sidebar-icons-container`]}>
@@ -21,7 +24,7 @@ export const Sidebar=()=>
             <FontAwesomeIcon icon={faBookmark} />
             <Link to="/bookmark">Bookmark</Link>
             <FontAwesomeIcon icon={faUser} />
-            <Link>Profile</Link>
+            <Link to={`/profile/${currentUser?.username}`}>Profile</Link>
             <button className={styles[`new-post-button`]} onClick={()=>dispatch({type:"TOGGLE_POST_MODAL",payload:true})}>Create New Post</button>
         </header>
         <ProfileCard />
