@@ -4,9 +4,9 @@ import { useContext, useEffect } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
-import {Sidebar} from "src/components/sidebar/SideBar.jsx";
+import { Sidebar } from "src/components/sidebar/Sidebar";
 import { SearchBar } from "src/components/searchbar/SearchBar";
-import {PostCard} from "src/components/postcard/PostCard.jsx";
+import {PostCard} from "src/components/postcard/PostCard";
 
 export const Bookmark=()=>
 {
