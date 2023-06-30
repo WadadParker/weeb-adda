@@ -9,6 +9,9 @@
     grid-column: 1 / span 2;
     font-size: 1.4rem;
     justify-self: start;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
 }
 .sidebar-container {
     display: flex;
