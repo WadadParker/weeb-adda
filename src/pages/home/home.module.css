@@ -24,6 +24,7 @@
 }
 .bookmark, .explore {
     text-decoration: underline;
+    text-decoration-color: #646cff;
 }
 .noEnemies {
     position: relative;

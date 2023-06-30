@@ -1,6 +1,6 @@
 import styles from "src/pages/home/home.module.css";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
@@ -14,6 +14,11 @@ export const Bookmark=()=>
     const {state:{userPosts}}=useContext(PostContext);
 
     const bookmarkedPosts=bookmarks.map(item=> [...userPosts].find(({_id})=>_id===item?._id));
+    
+    useEffect(()=>{ 
+        window.scrollTo(0, 0)
+   },[])
+
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />

@@ -1,5 +1,5 @@
 import styles from "src/pages/home/home.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
@@ -12,6 +12,11 @@ export const Explore=()=>
 {
     const {state:{userPosts},sortedPosts}=useContext(PostContext);
     const {state:{currentUser}}=useContext(ProfileContext);
+
+    useEffect(()=>{ 
+        window.scrollTo(0, 0)
+   },[])
+
     return (
         <div className={styles[`home-container`]}>
             <Sidebar />

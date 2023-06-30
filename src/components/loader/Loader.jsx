@@ -5,7 +5,7 @@ export const Loader=()=>
 {
     return (
         <div className={styles.loader}>
-            <img src={logo} alt="Loading" width={200} height={200} />
+            <img src={logo} alt="Loading" width={100} height={100} />
         </div>
     )
 }

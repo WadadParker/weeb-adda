@@ -1,0 +1,22 @@
+.custom-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    z-index: 9999;
+  }
+ .success {
+    background-color: #41f341;
+  }
+  
+ .error {
+    background-color: #f12e27;
+  }
+  
+ .warning {
+    background-color: #a4a83b;
+  }

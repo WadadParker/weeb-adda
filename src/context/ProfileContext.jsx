@@ -24,6 +24,8 @@ export const ProfileProvider=({children})=>
             case "BOOKMARKS":
                 return {...profile,bookmarks:payload};    
                  
+            case "UPDATE_SEARCH":
+                return {...profile,search:payload};    
 
             default:
                 return profile;    
@@ -35,6 +37,7 @@ export const ProfileProvider=({children})=>
         showModal:false,
         editProfile:{avatar:"",bio:"",websiteLink:""},
         bookmarks:[],
+        search:"",
     }
 
     const [state,dispatch]=useReducer(ProfileReducer,initialState);
