@@ -52,7 +52,7 @@
     grid-column: 1 / span 2;
     text-decoration: underline;
     text-decoration-color: #646cff;
-    
+    margin: 0rem;
 }
 .password {
     grid-column-start:1 ;
@@ -67,6 +67,8 @@
     border: 1px solid white;
     margin: 1rem;
     border-radius: 1rem;
+    color: white;
+    padding: 0.5rem 2rem;
 }
 .header {
     display: flex;

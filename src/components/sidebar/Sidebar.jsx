@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse,faMagnifyingGlass, faBookmark,faUser } from "@fortawesome/free-solid-svg-icons";
@@ -18,13 +18,13 @@ export const Sidebar=()=>
         <div className={styles[`sidebar-container`]}>
         <header className={styles[`sidebar-icons-container`]}>
             <FontAwesomeIcon icon={faHouse} />
-            <Link to="/home">Home</Link>
+            <NavLink to="/home" className={({isActive})=>(isActive?styles[`active-link`]:"")}>Home</NavLink>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <Link to="/explore">Explore</Link>
+            <NavLink to="/explore" className={({isActive})=>(isActive?styles[`active-link`]:"")}>Explore</NavLink>
             <FontAwesomeIcon icon={faBookmark} />
-            <Link to="/bookmark">Bookmark</Link>
+            <NavLink to="/bookmark" className={({isActive})=>(isActive?styles[`active-link`]:"")}>Bookmark</NavLink>
             <FontAwesomeIcon icon={faUser} />
-            <Link to={`/profile/${currentUser?.username}`}>Profile</Link>
+            <NavLink to={`/profile/${currentUser?.username}`} className={({isActive})=>(isActive?styles[`active-link`]:"")}>Profile</NavLink>
             <button className={styles[`new-post-button`]} onClick={()=>dispatch({type:"TOGGLE_POST_MODAL",payload:true})}>Create New Post</button>
         </header>
         <ProfileCard />

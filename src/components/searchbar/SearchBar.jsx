@@ -38,7 +38,9 @@ export const SearchBar=()=>
                 })}
             </ul>
             {search.length!==0 && <div className={styles[`searched-users-container`]}>
-                {searchedUsers?.map(user=>{
+                {searchedUsers.length===0
+                ? <h1 className={styles.noweebs}>No weebs found</h1>
+                : searchedUsers?.map(user=>{
                     return (
                         <li key={user?._id} className={styles[`searched-user-list-item`]}>
                             <img alt="pfp" src={user?.avatar} width={80} height={80} className={styles.pfp}/>

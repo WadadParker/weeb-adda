@@ -4,6 +4,7 @@
     grid-template-columns: auto 1fr;
     width: 100%;
     background-color: black;
+    color: white;
 }
 .create-post-modal{
     border: 1px solid black;
@@ -45,6 +46,7 @@
     align-self: stretch;
     resize: none;
     outline: none;
+    color: white;
 }
 .icon {
     font-size: 1.5rem;
