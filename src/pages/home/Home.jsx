@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { PostContext } from "src/context/PostContext";
 import { ProfileContext } from "src/context/ProfileContext";
 
-import {Sidebar} from "src/components/sidebar/sidebar.jsx";
+import {Sidebar} from "src/components/sidebar/Sidebar.jsx";
 import {PostCard} from "src/components/postcard/PostCard.jsx";
 import { FilterBar } from "src/components/filterbar/FilterBar";
 import { SearchBar } from "src/components/searchbar/SearchBar";

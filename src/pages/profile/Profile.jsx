@@ -2,7 +2,7 @@ import styles from "./profile.module.css";
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import {Sidebar} from "src/components/sidebar/sidebar.jsx";
+import {Sidebar} from "src/components/sidebar/Sidebar.jsx";
 import { ProfilePage } from "src/components/profilePage/ProfilePage";
 import { SearchBar } from "src/components/searchbar/SearchBar";
 import { ProfileContext } from "src/context/ProfileContext";
