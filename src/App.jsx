@@ -7,18 +7,18 @@ import styles from "src/app.module.css";
 
 
 if (import.meta.env.DEV) {
-	window.onerror = (event, source, lineno, colno, err) => {
-		const ErrorOverlay = customElements.get("vite-error-overlay");
-		if (!ErrorOverlay) {
-			return;
-		}
-		const overlay = new ErrorOverlay(err);
-		document.body.appendChild(overlay);
-	};
+  window.onerror = (event, source, lineno, colno, err) => {
+    const ErrorOverlay = customElements.get('vite-error-overlay');
+    if (!ErrorOverlay) {
+      return;
+    }
+    const overlay = new ErrorOverlay(err);
+    document.body.appendChild(overlay);
+  };
 }
 
 function App() {
-	const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
 	return (
 		<>
