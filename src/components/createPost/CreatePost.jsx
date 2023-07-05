@@ -41,7 +41,7 @@ export const CreatePost=({showModal,content})=>
                     <FontAwesomeIcon icon={faImage} className={styles.icon}/>
                     <FontAwesomeIcon icon={faFaceSmile} className={styles.icon}/>
                 </main>
-                <button className={styles.post} onClick={clickHandler}>{editPostFlag?"Update":"Post"}</button>
+                <button disabled={content.length===0} className={styles.post} onClick={clickHandler}>{editPostFlag?"Update":"Post"}</button>
             </footer>
         </div>
     )
