@@ -14,10 +14,17 @@
     width: 46vw;
     background-color: black;
     border-radius: 1rem;
+    overflow-y: scroll;
+    height: 90vh;
 }
 .header {
     display: flex;
     align-items: center;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    border-bottom:1px solid white ;
+    background-color: black;
 }
 .icon {
     font-size: 1.6rem;
@@ -43,7 +50,6 @@
     color: white;
 }
 .coverimg {
-    border-top:1px solid white;
     border-bottom:1px solid white;
     width: 100%;
     object-fit: cover;
@@ -72,6 +78,16 @@
     text-decoration: underline;
 }
 .bio {
+    width: 90%;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    padding: 1rem 0;
+    color: white;
+    height: 12vh;
+    resize: none;
+}
+.website {
     width: 90%;
     background-color: transparent;
     border: 0;
