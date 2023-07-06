@@ -90,3 +90,9 @@
     cursor: pointer;
     color: rgb(235, 33, 33);
 }
+@media screen and (max-width:1065px)
+{
+    .create-post-container {
+        width: 98%;
+    }
+}

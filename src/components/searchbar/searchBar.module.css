@@ -80,3 +80,9 @@
     justify-content: center;
     margin-top: 20%;
 }
+@media screen and (max-width:1065px)
+{
+    .search-users-container {
+        display: none;
+    }
+}
