@@ -102,3 +102,21 @@
 .unfollow-button:focus {
     outline: none;
 }
+.posts-list-container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    min-width: 10rem;
+    max-width: 100%;
+    flex-grow: 1;
+}
+@media screen and (max-width:1065px)
+{
+    .profilePage-container {
+        width: 100%;
+    }
+    .posts-list-container {
+        padding-inline-start: 10px;
+    }
+}

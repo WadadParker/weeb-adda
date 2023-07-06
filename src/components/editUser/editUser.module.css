@@ -117,3 +117,9 @@
     margin-top: 0;
     color: white;
 }
+@media screen and (max-width:1065px)
+{
+    .form-container  {
+        width:85vw;
+    }
+}
