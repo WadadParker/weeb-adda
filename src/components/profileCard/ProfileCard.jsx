@@ -26,7 +26,8 @@ export const ProfileCard=()=>
             <img className={styles[`profile-img`]} src={currentUser?.avatar} 
             alt=""
             width={76}
-            height={76}/>
+            height={76}
+            onClick={()=>setShowLogout(true)}/>
             <header className={styles['profile-card-header']} onClick={()=>navigate(`/profile/${currentUser?.username}`)}>
                 <strong>{currentUser?.name}</strong>
                 <span>@{currentUser?.username}</span>

@@ -44,6 +44,7 @@
     display: grid;
     grid-template-areas: "footer";
     place-items: center;
+    grid-area: img;
 }
 .logout {
     color: rgb(248, 24, 24);
@@ -52,4 +53,26 @@
 .close {
     color: #646cff;
     cursor: pointer;
+}
+@media screen and (max-width:1065px)
+{
+    .profile-card-header,.ellipsis {
+        display: none;
+    }
+    .profile-img {
+        margin-left: 0;
+        grid-area: img;
+        cursor: pointer;
+    }
+    .logout-container {
+        grid-area: img;
+        margin-left: 0.3rem;
+        margin-top: -11rem;
+        text-align: center;
+    }
+    .profile-card {
+        border: 0;
+        display: grid;
+        grid-template-areas: "img";
+    }
 }
