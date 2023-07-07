@@ -93,3 +93,23 @@
     padding-left: 0.5rem;
     color: #646cff;
 }
+@media screen and (max-width:700px)
+{
+    .signup-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow-y: scroll;
+        height: 70vh;
+        font-size: 1.5rem;
+    }
+    .signup-container h2,.signup-container button, .signup-container a {
+        grid-column: 1 / span 1;
+    }
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    .input-field-container input, .password-field-container input {
+        font-size: 1rem;
+    }
+    
+}
