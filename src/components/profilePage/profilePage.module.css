@@ -119,6 +119,43 @@
         width: 100%;
     }
     .posts-list-container {
-        padding-inline-start: 10px;
+        padding-inline-start: 0px;
     }
+}
+@media screen and (max-width:625px)
+{
+    
+    .profilePage-container  {
+        margin: 0;
+        border: 0;
+    }
+    .edit-button,.follow-button,.unfollow-button {
+        font-size: 1rem;
+        order:2;
+        box-sizing: border-box;
+    }
+    .coverimg {
+        height: 200px;;
+    }
+    .pfp {
+        scale: 0.6;
+        margin-left: 0rem;
+        position: absolute;
+        left: 0;
+    }
+    .footer-container,.profile-header-container,.logout-button {
+        font-size: 1rem;
+    }
+    .main {
+        margin-top: 1rem;
+        padding-right: 0;
+    }
+    .profilePage-container h1 {
+        font-size: 1.5rem;
+        margin: 1rem;
+    }
+    .posts-list-container {
+        padding-bottom: 10vh;
+    }
+
 }
