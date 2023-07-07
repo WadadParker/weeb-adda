@@ -51,7 +51,7 @@ export const ProfilePage=({user,isCurrentUser})=>
             <hr className={styles.hr}/>
             <h1>Posts</h1>
 
-            <ul className={styles_list[`posts-list-container`]}>
+            <ul className={styles[`posts-list-container`]}>
                 {currentUserPosts.map(item=>{
                     const {_id}=item;
                     return (

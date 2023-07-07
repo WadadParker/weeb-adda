@@ -1,5 +1,6 @@
 .coverimg {
-    border: 1px solid white;
+    border: 0;
+    border-bottom: 1px solid white;
     width: 100%;
     object-fit: cover;
 }
@@ -48,6 +49,7 @@
     display: flex;
     flex-direction: column;
     border: 2px solid white;
+    border-top:0 ;
     width: 65vw;
     flex-grow: 1;
     margin:0 1rem;
@@ -101,4 +103,59 @@
 }
 .unfollow-button:focus {
     outline: none;
+}
+.posts-list-container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    min-width: 10rem;
+    max-width: 100%;
+    flex-grow: 1;
+}
+@media screen and (max-width:1065px)
+{
+    .profilePage-container {
+        width: 100%;
+    }
+    .posts-list-container {
+        padding-inline-start: 0px;
+    }
+}
+@media screen and (max-width:625px)
+{
+    
+    .profilePage-container  {
+        margin: 0;
+        border: 0;
+    }
+    .edit-button,.follow-button,.unfollow-button {
+        font-size: 1rem;
+        order:2;
+        box-sizing: border-box;
+    }
+    .coverimg {
+        height: 200px;;
+    }
+    .pfp {
+        scale: 0.6;
+        margin-left: 0rem;
+        position: absolute;
+        left: 0;
+    }
+    .footer-container,.profile-header-container,.logout-button {
+        font-size: 1rem;
+    }
+    .main {
+        margin-top: 1rem;
+        padding-right: 0;
+    }
+    .profilePage-container h1 {
+        font-size: 1.5rem;
+        margin: 1rem;
+    }
+    .posts-list-container {
+        padding-bottom: 10vh;
+    }
+
 }

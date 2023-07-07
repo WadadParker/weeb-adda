@@ -6,7 +6,6 @@ import { ProfileContext } from "src/context/ProfileContext";
 
 export const FollowerCard=({user})=>
 {
-    // const [isFollowing,setIsFollowing]=useState(false);
     const isFollowingRef = useRef(false);
     const {followUser,unfollowUser}=useContext(ProfileContext);
     const navigate=useNavigate();
@@ -30,7 +29,7 @@ export const FollowerCard=({user})=>
             height={76}/>
             <header className={styles['profile-card-header']} onClick={()=>navigate(`/profile/${user?.username}`)}>
                 <strong>{user?.name}</strong>
-                <span>@{user?.username}</span>
+                <small>@{user?.username}</small>
             </header>
             {isFollowingRef.current
             ?<button className={styles.following} onClick={()=>unfollowHandler()}>Following</button>

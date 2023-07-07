@@ -20,12 +20,12 @@ export const Bookmark=()=>
    },[])
 
     return (
-        <div className={styles[`home-container`]}>
+        <div className={`${styles[`home-container`]} ${styles[`bookmark-container`]}`}>
             <Sidebar />
             <ul className={styles[`posts-list-container`]}> 
                 <h1 className={styles.bookmark}>Bookmarks</h1>
                     {bookmarkedPosts.length===0
-                    ? <h1>You have no <span className={styles.noEnemies}>enemies</span> Bookmarks</h1>
+                    ? <h1 className={styles[`empty-boomarks`]}>You have no <span className={styles.noEnemies}>enemies</span> Bookmarks</h1>
                     : bookmarkedPosts?.map(item=>{
                         const {_id}=item;
                         return (

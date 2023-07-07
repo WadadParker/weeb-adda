@@ -14,6 +14,8 @@
     list-style: none;
     grid-area:list ;
     width: 90%;
+    padding-inline-start: 0px;
+    justify-self: center;
 }
 .suggested-users-list li {
     min-width: min-content;
@@ -71,4 +73,16 @@
 } 
 .noweebs {
     text-align: center;
+    max-width: 9vw;
+    min-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+@media screen and (max-width:1065px)
+{
+    .search-users-container {
+        display: none;
+    }
 }

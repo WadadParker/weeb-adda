@@ -35,13 +35,13 @@ export const CreatePost=({showModal,content})=>
     return (
         <div className={showModal?styles[`create-post-modal`]:styles[`create-post-container`]}>
             <img className={styles.img} src={currentUser?.avatar} alt="pfp" width={100} height={100}/>
-            <textarea value={content} className={styles.input} placeholder="Nani ga okotte iru?" onChange={(e)=>changeHandler(e)}></textarea>
+            <textarea rows={5} cols={15} value={content} className={styles.input} placeholder="Nani ga okotte iru?" onChange={(e)=>changeHandler(e)}></textarea>
             <footer className={styles.footer}>
                 <main>
                     <FontAwesomeIcon icon={faImage} className={styles.icon}/>
                     <FontAwesomeIcon icon={faFaceSmile} className={styles.icon}/>
                 </main>
-                <button className={styles.post} onClick={clickHandler}>{editPostFlag?"Update":"Post"}</button>
+                <button disabled={content.length===0} className={styles.post} onClick={clickHandler}>{editPostFlag?"Update":"Post"}</button>
             </footer>
         </div>
     )

@@ -55,16 +55,16 @@ export const Signup=()=>
                     <label htmlFor="password">Enter Password</label>
                     <input type={displayPassword?"text":"password"} id="password" value={password} onChange={(e)=>dispatch({type:"SIGNUP_FIELDS",payload:e.target.value,inputField:"password"})}></input>
                     {displayPassword
-                    ?<FontAwesomeIcon icon={faEyeSlash} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_PASSWORD"})} />
-                    :<FontAwesomeIcon icon={faEye} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_PASSWORD"})}/>}
+                    ?<FontAwesomeIcon icon={faEye} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_PASSWORD"})} />
+                    :<FontAwesomeIcon icon={faEyeSlash} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_PASSWORD"})}/>}
                     </div>    
 
                     <div className={styles[`password-field-container`]}>
                     <label htmlFor="confirm-password">Confirm Password</label>
                     <input type={displayConfirmPassword?"text":"password"} id="confirm-password" value={confirmPassword} onChange={(e)=>dispatch({type:"SIGNUP_FIELDS",payload:e.target.value,inputField:"confirmPassword"})}></input>
                     {displayConfirmPassword
-                    ?<FontAwesomeIcon icon={faEyeSlash} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_CONFIRM_PASSWORD"})}/>
-                    :<FontAwesomeIcon icon={faEye} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_CONFIRM_PASSWORD"})} />}
+                    ?<FontAwesomeIcon icon={faEye} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_CONFIRM_PASSWORD"})}/>
+                    :<FontAwesomeIcon icon={faEyeSlash} className={styles.icon} onClick={()=>dispatch({type:"TOGGLE_CONFIRM_PASSWORD"})} />}
                     </div>
 
                     <button className={styles[`signup-button`]} onClick={()=>checkAllFields(showToast)}>Signup</button>

@@ -40,11 +40,11 @@ export const EditUser=()=>
                 <br />
                 <main className={styles.main}>
                     <label>Bio</label>
-                    <input className={styles.bio} value={bio} onChange={(e)=>dispatch({type:"EDIT_PROFILE_FIELDS",payload:e.target.value,inputField:"bio"})}></input>
+                    <textarea className={styles.bio} value={bio} onChange={(e)=>dispatch({type:"EDIT_PROFILE_FIELDS",payload:e.target.value,inputField:"bio"})}></textarea>
                 </main>
                 <footer className={styles.main}>
                     <label>Website</label>
-                    <input className={styles.bio} value={websiteLink} onChange={(e)=>dispatch({type:"EDIT_PROFILE_FIELDS",payload:e.target.value,inputField:"websiteLink"})}></input>
+                    <input className={styles.website} value={websiteLink} onChange={(e)=>dispatch({type:"EDIT_PROFILE_FIELDS",payload:e.target.value,inputField:"websiteLink"})}></input>
                 </footer>
             </div>
         </div>
