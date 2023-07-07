@@ -76,3 +76,9 @@
         grid-template-areas: "img";
     }
 }
+@media screen and (max-width:625px)
+{
+    .profile-card {
+        display: none;
+    }
+}
