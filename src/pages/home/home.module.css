@@ -44,4 +44,12 @@
         flex-direction: column-reverse;
         width: 100vw;
     }
+    .posts-list-container {
+        padding-inline-start: 0;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+    .post-list-item {
+        margin: 1rem 0;
+    }
 }
