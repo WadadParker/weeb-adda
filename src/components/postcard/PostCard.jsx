@@ -25,8 +25,10 @@ export const PostCard=({post,username,isCurrentUser})=>
     }
     const deleteClickHandler=()=>
     {
+        removeFromBookmarks(post?._id)  
         deletePost(post?._id);
         setShowModal(false);
+        
     }
     const usernameClickHandler=()=>
     {
@@ -61,7 +63,6 @@ export const PostCard=({post,username,isCurrentUser})=>
             </p>
             <footer className={styles[`postcard-footer`]}>
                 <span>
-
                     {foundIfLiked(post?.likes?.likedBy,currentUser?.username)
                     ?<FontAwesomeIcon icon={heart} className={styles.heart} onClick={()=>dislikePost(post?._id)}/>
                     :<FontAwesomeIcon icon={faHeart} className={styles.icon} onClick={()=>likePost(post?._id)}/>}
@@ -69,7 +70,7 @@ export const PostCard=({post,username,isCurrentUser})=>
                 </span>
                 <span>
                     <FontAwesomeIcon icon={faComment} className={styles.icon} />
-                    <small>2</small>
+                    <small></small>
                 </span>
                 <FontAwesomeIcon icon={faShareNodes} className={styles.icon} />
                 {findBookmark(bookmarks,post?._id)
