@@ -98,7 +98,7 @@ export const users = [
     password: "zoro",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatar:"https://pbs.twimg.com/profile_images/1641173578702893059/rPzxgs8Q_400x400.jpg",
+    avatar:"https://wallpapers-clan.com/wp-content/uploads/2022/08/zoro-pfp-1.jpg",
     bio:`I will be the world's strongest swordsman! Dattebayo! `,
     website:"www.google.com",
     bookmarks: [],
